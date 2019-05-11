@@ -32,7 +32,7 @@ public class Eebie_Controls : MonoBehaviour
         anim.SetBool("Ground", grounded);
 
         if (grounded)
-            doubleJump = false; 
+            doubleJump = false;
 
         anim.SetFloat("vSpeed", GetComponent<Rigidbody2D>().velocity.y);
 
@@ -51,8 +51,11 @@ public class Eebie_Controls : MonoBehaviour
     void Update()
     {
         if ((grounded || !doubleJump) && Input.GetKeyDown(KeyCode.UpArrow))
+        {
             anim.SetBool("Ground", false);
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
+            //GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        }
 
         if (!doubleJump && !grounded)
             doubleJump = true;
