@@ -48,6 +48,9 @@ public class Eebie_Controls : MonoBehaviour
             Flip();
     }
 
+
+ 
+
     void Update()
     {
         if ((grounded || !doubleJump) && Input.GetKeyDown(KeyCode.UpArrow))
@@ -57,8 +60,16 @@ public class Eebie_Controls : MonoBehaviour
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
 
+        if (Input.GetKeyDown(KeyCode.C))
+            anim.SetTrigger("Curious");
+
+        if (Input.GetKeyDown(KeyCode.V))
+            anim.SetTrigger("Confused");
+
         if (!doubleJump && !grounded)
             doubleJump = true;
+
+
 
     }
 
